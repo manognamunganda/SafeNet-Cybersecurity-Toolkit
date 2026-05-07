@@ -1,0 +1,23 @@
+query,label
+"hello world",0
+"search product",0
+"contact us page",0
+"user request",0
+"add to cart",0
+"welcome page",0
+"view profile",0
+"submit feedback",0
+"hie",0
+"login request",0
+
+"' OR 1=1 --",1
+"UNION SELECT username,password FROM users",1
+"<script>alert(1)</script>",1
+"<img src=x onerror=alert(1)>",1
+"; rm -rf /",1
+"&& cat /etc/passwd",1
+"../../etc/passwd",1
+"../config/settings.py",1
+"file=virus.exe",1
+"upload malware.php",1
+"#",1

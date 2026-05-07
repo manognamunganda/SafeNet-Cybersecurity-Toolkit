@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SafeNet | MFA Setup</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .qr-box img {
+            display: block;
+            margin: 16px auto;
+            width: 200px;
+            height: 200px;
+            border: 8px solid #1e293b;
+            background: white;
+            padding: 6px;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body class="login-body">
+
+<div class="login-container qr-box">
+    <h3>🔐 Setup MFA</h3>
+    <p>Scan this QR using Google Authenticator / Authy</p>
+
+    <!-- QR IMAGE (FIXED) -->
+    <img src="data:image/png;base64,{{ qr }}" alt="MFA QR Code">
+
+    <p class="muted">After scanning, logout and login again.</p>
+
+    <a href="/login">
+        <button style="width:100%;">Continue</button>
+    </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SafeNet SOC</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="{{ url_for('static', filename='js/monitor.js') }}"></script>
+
+    <style>
+        .box { padding:10px; border:1px solid #0f0; margin-bottom:10px; }
+    </style>
+</head>
+<body onload="startMonitoring()">
+
+<h2>🛡 SafeNet SOC</h2>
+<p><b>WAF STATUS:</b> <span style="color:lime;">ACTIVE</span></p>
+
+<div class="box">
+    <h3>📊 Traffic Overview</h3>
+    Total: <span id="total">0</span> |
+    Safe: <span id="benign">0</span> |
+    Attacks: <span id="malicious">0</span>
+</div>
+
+<div class="box">
+    <h3>📡 Live Monitoring</h3>
+    <div id="liveLog" class="live-log"></div>
+</div>
+
+<a href="/dashboard">⬅ Back to Dashboard</a>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SafeNet Dashboard</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+<!-- TOP NAVBAR -->
+<nav class="top-navbar">
+    <div class="logo-section">
+        <img src="/static/images/safenet.png" alt="SafeNet Logo">
+        <span>SafeNet</span>
+    </div>
+
+    <ul class="nav-links">
+        <li onclick="loadPage('login')">Login Details</li>
+        <li onclick="loadPage('dashboard')">Dashboard</li>
+        <li onclick="loadPage('monitor')">Monitor</li>
+        <li onclick="loadPage('graphs')">Graphs</li>
+    </ul>
+    <i class="fa-solid fa-shield-halved"></i> SafeNet 
+<i class="fa-solid fa-bug"></i> Attack
+<i class="fa-solid fa-copy"></i> Copy
+<i class="fa-solid fa-share-nodes"></i> Share
+
+    <div class="user-section">
+        <span id="user-name">Admin</span>
+        <button onclick="logout()">Logout</button>
+    </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div id="main-content">
+    <h2>Welcome to SafeNet</h2>
+</div>
+
+<script src="/static/js/dashboard.js"></script>
+</body>
+</html>

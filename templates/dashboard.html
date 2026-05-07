@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SafeNet | Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/monitor.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}" defer></script>
+</head>
+
+<body>
+
+<!-- PROFILE PANEL -->
+<div id="profileBox" class="profile-box">
+    <button class="close-profile" onclick="toggleProfile()">✕</button>
+    <h4>User Profile</h4>
+    <p><b>Username:</b> {{ current_user.username }}</p>
+    <p><b>MFA:</b> Enabled</p>
+</div>
+
+<div class="soc-container">
+
+<!-- TOP BAR -->
+<header class="topbar">
+    <div class="left">
+        <h2>🛡 SafeNet</h2>
+    </div>
+
+    <nav class="nav-tabs">
+        <span onclick="showSection('scanner')">Scanner</span>
+        <span onclick="showSection('traffic')">Traffic</span>
+        <span onclick="showSection('monitor')">Monitor</span>
+    </nav>
+
+    <div class="right">
+        <span class="user-name" onclick="toggleProfile()">👤 {{ current_user.username }}</span>
+        <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+    </div>
+</header>
+
+<!-- ILLUSTRATION -->
+<img src="/static/images/soc-dashboard.svg" class="header-illustration" alt="SOC Dashboard">
+
+
+
+<div class="grid">
+
+<!-- ================= SCANNER ================= -->
+<section id="scanner" class="panel section" style="display:none;">
+    <h3>🔍 Request Scanner</h3>
+<!-- WELCOME BANNER -->
+<section class="welcome-banner">
+    <h3>Welcome back, {{ current_user.username }}</h3>
+    <p>Here is the current security posture of your system.</p>
+</section>
+    <form method="POST">
+        <input type="text" name="query" placeholder="Enter request or attack payload…" required>
+        <button type="submit">Scan</button>
+    </form>
+
+    {% if result == "Malicious" %}
+    <div class="scan-result danger">
+        <b>Status:</b> 🚨 Malicious<br>
+        <b>Type:</b> {{ attack_type }}
+    </div>
+
+    <div id="alertText">
+        🚨 Attack Detected: {{ attack_type }}<br>
+        {{ explanation }}
+    </div>
+
+    <div class="alert-actions">
+        <button onclick="copyAlert()">📋 Copy</button>
+        <button onclick="shareAlert()">📤 Share</button>
+    </div>
+    {% endif %}
+
+    {% if explanation %}
+    <div class="explain-box">
+        <b>What is this?</b><br>{{ explanation }}<br><br>
+        <b>Why dangerous?</b><br>{{ importance }}
+    </div>
+    {% endif %}
+
+    <div class="attack-timeline">
+        <h4>⏱ Recent Scanner Activity</h4>
+        <div class="timeline-item danger">SQL Injection</div>
+        <div class="timeline-item safe">Benign Request</div>
+    </div>
+</section>
+
+<!-- ================= TRAFFIC ================= -->
+<section id="traffic" class="panel section" style="display:none;">
+    <h3>📊 Traffic Overview</h3>
+
+    <div class="stats-grid">
+        <div class="stat-box">
+            <span>Total Requests</span>
+            <h2>{{ total }}</h2>
+        </div>
+
+        <div class="stat-box safe">
+            <span>Safe Requests</span>
+            <h2>{{ safe }}</h2>
+        </div>
+
+        <div class="stat-box danger">
+            <span>Threats Detected</span>
+            <h2>{{ attacks }}</h2>
+        </div>
+
+        <div class="stat-box status">
+            <span>System Status</span>
+            <h2>ACTIVE</h2>
+        </div>
+    </div>
+
+    <canvas id="trafficChart"></canvas>
+
+    <h4 class="section-title">🌍 Top Attacking Countries</h4>
+    <canvas id="countryChart"></canvas>
+
+    <h4 class="section-title">🗺️ Global Attack Map</h4>
+    <div id="attackMap" class="attack-map"></div>
+</section>
+
+<!-- ================= MONITOR ================= -->
+<section id="monitor" class="panel section" style="display:none;">
+    <h3>📡 Live Monitoring</h3>
+    <div id="liveLog" class="live-log">Waiting for traffic...</div>
+</section>
+
+</div>
+</div>
+
+<script>
+    window.SAFE_COUNT = {{ safe }};
+    window.ATTACK_COUNT = {{ attacks }};
+</script>
+
+</body>
+</html>

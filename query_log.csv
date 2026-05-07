@@ -1,0 +1,40 @@
+time,query,label
+2026-01-03 16:17:50,<script>alert(1)</script>,1
+2026-01-03 16:17:57,hello world,0
+2026-01-03 16:18:04,id=1,1
+2026-01-03 16:18:33,' OR '1'='1,1
+2026-01-03 16:18:41,safenet,1
+2026-01-03 16:35:25,hello world,0
+2026-01-03 19:04:33,id=1,1
+2026-01-03 19:04:45,hie,1
+2026-01-03 19:10:08,hie,1
+2026-01-03 19:10:17,id=0,1
+2026-01-03 19:10:23,contract,1
+2026-01-03 19:10:31,contract request,1
+2026-01-03 19:45:04,add to cart,0
+2026-01-03 21:45:10,hello world ,1
+2026-01-12 11:36:18,<script>alert(1)</script>,1
+2026-01-12 11:40:32,hello user login request,0
+2026-01-12 11:40:43,' OR 1=1 --,1
+2026-01-12 11:40:51,SELECT * FROM users,1
+2026-01-12 12:04:32,hie ,1
+2026-01-12 12:04:40,ImmutableMultiDict([])ImmutableMultiDict([]),1
+2026-01-12 12:04:41,ImmutableMultiDict([])ImmutableMultiDict([]),1
+2026-01-12 12:04:43,ImmutableMultiDict([])ImmutableMultiDict([]),1
+2026-01-12 12:04:59,' or '1=1',1
+2026-01-12 12:27:32,hellow wrold,1
+2026-01-12 12:39:20,add to cart,0
+2026-01-12 12:39:30,hello world,1
+2026-01-12 14:46:04,hie,1
+2026-01-12 14:46:13,login request,0
+2026-01-12 14:46:39,login request,0
+2026-01-12 14:46:50,login request,0
+2026-01-12 14:59:01,hello world,1
+2026-01-12 15:07:00,hello world,1
+2026-01-12 15:07:03,hie,1
+2026-01-12 15:07:11,request login,0
+2026-01-12 15:25:38,<script>alert(1)</script>,1
+2026-01-12 15:41:13,<script>alert(1)</script>,1
+2026-01-12 15:44:29,hie,1
+2026-01-12 15:44:36,hello world,1
+2026-01-12 15:44:43,request login,0

@@ -1,0 +1,23 @@
+# Core Web Framework
+Flask
+Flask-Login
+
+# Data Processing
+pandas
+numpy
+
+# Machine Learning
+scikit-learn
+joblib
+
+# Visualization
+matplotlib
+chart.js
+
+# Security & Utilities
+python-dateutil
+regex
+
+# Development & Deployment
+gunicorn
+python-dotenv
